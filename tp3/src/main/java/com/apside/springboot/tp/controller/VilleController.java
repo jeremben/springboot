@@ -3,6 +3,8 @@ package com.apside.springboot.tp.controller;
 import com.apside.springboot.tp.dto.VilleDto;
 import com.apside.springboot.tp.service.VilleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,8 +21,10 @@ public class VilleController {
     }
 
     @PostMapping
-    public void addVille(@RequestBody List<VilleDto> villeDtoList) {
+    public ResponseEntity addVille(@RequestBody List<VilleDto> villeDtoList) {
         villeService.addVilleToList(villeDtoList);
+
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 
 }
